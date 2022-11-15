@@ -18,9 +18,9 @@
                 <label for="password">Password: </label>
                 <input type="password">
             </div>
-            <div>
-                <input type="submit" value="Login">
-                <input type="button" value="Sign up">
+            <div class="login-buttons-box">
+                <button type="submit">Login</button>
+                <button type="button">Sign up</button>
             </div>
         </div>
     </main>
