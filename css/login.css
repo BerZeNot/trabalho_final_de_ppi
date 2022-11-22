@@ -41,7 +41,7 @@ input:focus {
     outline: none;   
 }
 
-div.login-wrapper div {
+form div {
     margin: 10px 0;
 }
 
