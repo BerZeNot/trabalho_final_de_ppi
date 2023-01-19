@@ -20,11 +20,31 @@ div.form-wrapper {
     box-shadow: 0 0 10px gray;;
 }
 
-label {
-    margin-top: 110px;
-}
-
 h1 {
     text-align: center;
     margin: 15px 0;
+}
+
+input {
+    margin-bottom: 2px;
+}
+
+span.msg{
+    display: inline-block;
+    color: red;
+    margin-bottom: 5px;
+    margin-top: 4px;
+}
+
+div.success {
+    text-align: center;
+}
+
+div.success a{
+    color: rgb(65, 65, 65);
+    font-weight: 600;
+}
+
+div.success a:hover{
+    color: rgb(107, 107, 107);
 }
