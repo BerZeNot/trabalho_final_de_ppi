@@ -2,6 +2,7 @@ create table anunciante(
 	codigo integer auto_increment not null,
 	nome varchar(50) not null,
 	cpf varchar(11) not null,
+	email varchar(50) not null
 	senha varchar(128) not null,
 	telefone varchar(13) not null,
 	constraint primary key(codigo)
