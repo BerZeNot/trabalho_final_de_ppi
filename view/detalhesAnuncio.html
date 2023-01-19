@@ -18,7 +18,7 @@
      
              <div id="descricao">
                  <span id="inf">Principais informações sobre o produto: </span>
-                 <ul>
+                 <ul id="informacoes">
                      <li>Processador AMD Ryzen 7.</li>
                      <li>Memória RAM de 16GB.</li>
                      <li>Resolução de 1920x1080 px.</li>
@@ -28,20 +28,27 @@
                  </ul>
              </div>
 
-             <div id="preco">
-                 <form action="">
-                    <h2>R$ 6.999,99</h2>
+             <div id="preco"> 
+                <h2>$preco</h2>
+                <button onclick="btnInteresse()" class="btn" id="tenhoInteresse">Tenho Interesse</button>
 
-                    <label for="cep" id="cepLabel">Calcular o frete: </label>
-                    <span></span>
+                 <div id="interesse">
+                    <form action="salvarInteresse.php">
+                        <div>
+                            <label for="contato" id="contatoLabel">Contato: </label>
+                            <input id="contato" name="contato" type="text" required>
+                        </div>
 
-                    <input pattern="[0-9]{5}-[0-9]{3}" id="cep" type="text" required>
+                        <div>
+                            <label for="mensagem" id="mensagemLabel">Mensagem: </label>
+                            <textarea id="mensagem" name="mensagem" rows="2" cols="50" maxlength="200"></textarea>
+                        </div>
 
-                    <button class="btn" id="comprar">Comprar Agora</button>
-                    <button class="btn" id="carrinho">Adicionar no carrinho</button>
-                 </form>
-                 
+                       <button class="btn" id="enviarInteresse">Enviar</button>
+                    </form>
+                </div>
             </div>
+            
         </div>
 
         <div id="div2">

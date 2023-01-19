@@ -79,21 +79,13 @@ li{
     border: none;
 }
 
-#comprar{
+button{
     background-color: rgba(32, 32, 255, 0.85);
     margin-top: 60px;
 }
 
-#carrinho{
-    background-color: rgb(109, 160, 255);
-}
-
-#comprar:hover {
+button:hover {
         background-color: rgba(0, 0, 118, 0.85);
-}
-
-#carrinho:hover {
-    background-color: rgba(0, 53, 151, 0.844);
 }
 
 h2{
@@ -124,6 +116,19 @@ input:focus {
 p{
     margin: 20px;
     
+}
+
+#contato{
+    width: 200px;
+}
+
+#mensagem{
+    width: 200px;
+    margin-top: 20px;
+}
+
+#interesse{
+    display: none;
 }
 
 @media (max-width: 720px) {
