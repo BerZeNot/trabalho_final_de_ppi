@@ -27,9 +27,9 @@ async function cadastrarAnunciante(){
         form.hidden = true;
         document.querySelector(".title").innerText = "Cadastro realizado com sucesso!";
         p = document.createElement("p");
-        p.innerHTML = 'Redirecionando para a <a href="/view/login.php">página de login</a>';
+        p.innerHTML = 'Redirecionando para a <a href="/view/login.html">página de login</a>';
         document.querySelector(".success").appendChild(p);
-        setTimeout(() => window.location = "/view/login.php", 3000);
+        setTimeout(() => window.location = "/view/login.html", 3000);
     } else {
         window.alert(data.messages[0]);
         return
