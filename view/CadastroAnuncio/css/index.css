@@ -1,0 +1,31 @@
+header {
+  height: 100px;
+  background-color: #A9A9A9;
+  display: block;
+  position: relative;
+}
+
+#header-logo {
+  display: inline;
+  margin-left: 64px;
+  margin-top: 12px;
+}
+
+#header-user {
+  float: right;
+}
+
+.container {
+  margin-top: 64px;
+}
+
+footer {
+  display: block;
+  background-color: #A9A9A9;
+  width: 100%;
+  text-align: center;
+}
+
+footer p {
+  padding: 24px 0;
+}
