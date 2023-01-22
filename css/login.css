@@ -57,6 +57,17 @@ div.login-buttons-box button {
     margin: 10px 0;
 }
 
+span.msg {
+    color: red;
+    display: block;
+    margin-top: 5px ;
+}
+
+div.message-box {
+    text-align: center;
+    color: red;
+}
+
 @media (max-width: 720px) {
     main {
         width: 80vw;
