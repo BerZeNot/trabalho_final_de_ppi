@@ -32,7 +32,7 @@ async function tryLogin(){
 }
 
 function signUp(){
-    window.location = "/view/cadastroAnunciante.html";
+    window.location = "/view/cadastroAnunciante.php";
 }
 
 function validaDadosDoForm(form){
