@@ -3,8 +3,8 @@
 function getConnection(){
     $db_host = "localhost";
     $db_username = "root";
-    $db_password = "senhaDoBanco";
-    $db_name = "portalAnuncios";
+    $db_password = "password";
+    $db_name = "portalanuncios";
 
     // dsn é apenas um acrônimo de database source name
     $dsn = "mysql:host=$db_host;dbname=$db_name;charset=utf8mb4";
