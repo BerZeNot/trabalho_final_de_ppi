@@ -82,6 +82,7 @@ header {
   border-radius: 12px;
   display: inline-block;
   margin-left: 64px;
+  margin-bottom: 64px;
 }
 
 .product-card-image {
@@ -95,6 +96,15 @@ header {
 }
 
 .product-card-description {
+  color: rgb(66, 70, 77);
+}
+
+.product-card-code {
+  display: none;
+}
+
+.product-card-title {
+  font-weight: bold;
   color: rgb(66, 70, 77);
 }
 
@@ -119,13 +129,13 @@ product-card-button-container {
 }
 
 #categories-aside {
-  margin-top: 5%;
-  width: 10%;
   float: right;
+  top: 15%;
+  left: 1%;
 }
 
 .landing-container {
-  margin-top: 5%;
+  margin-top: 0px;
   width: 90%;
   display: inline-block;
 }
@@ -152,9 +162,14 @@ product-card-button-container {
 
 footer {
   display: block;
+  position: fixed;
   background-color: #A9A9A9;
   width: 100%;
   text-align: center;
+  height: 100px;
+  bottom: 0;
+  margin: auto;
+  left: 0;
 }
 
 footer p {

@@ -13,99 +13,28 @@
 <body>
   <header>
     <img id="header-logo" src="./assets/Logo256px.png" alt="OPG Commerce logo" width="64" height="64">
-    <form action="/" class="search-bar">
-      <input type="text" placeholder="Pesquise aqui" name="q">
-      <button type="submit">
-        <img id="search-bar-img" src="./assets/search-icon.svg" alt="">
-      </button>
-    </form>
+    <input type="text" placeholder="Pesquise aqui" id="pesquisa" name="pesquisa">
+    
     <button id="header-button" type="button">Entrar</button>
   </header>
   <div class="landing-container">
-    <div class="card-container">
-      <div class="product-card">
-        <img class="product-card-image" src="./images/85197_1484306076_m.jpg" alt="">
-        <div class="product-card-info-container">
-          <p class="product-card-description">SSD KINGSTON</p>
-          <p class="product-card-price">R$ 200,00</p>
+    
+    <section class="card-container">
+      <template id="template">
+        <div class="product-card">
+          <img class="product-card-image" src="assets/{{imagePath}}" alt="">
+          <div class="product-card-info-container">
+            <p class="product-card-title">{{titulo}}</p>
+            <p class="product-card-description">{{descricao}}</p>
+            <p class="product-card-price">R$ {{preco}}</p>
+            <p class="product-card-code">{{codigo}}</p>
+          </div>
+          <div class="product-card-button-container">
+            <button class="product-card-button" id="btnCompra" name="btnCompra">Comprar</button>
+          </div>
         </div>
-        <div class="product-card-button-container">
-          <button class="product-card-button">Comprar</button>
-        </div>
-      </div>
-      <div class="product-card">
-        <img class="product-card-image" src="./images/85197_1484306076_m.jpg" alt="">
-        <div class="product-card-info-container">
-          <p class="product-card-description">SSD KINGSTON</p>
-          <p class="product-card-price">R$ 200,00</p>
-        </div>
-        <div class="product-card-button-container">
-          <button class="product-card-button">Comprar</button>
-        </div>
-      </div>
-      <div class="product-card">
-        <img class="product-card-image" src="./images/85197_1484306076_m.jpg" alt="">
-        <div class="product-card-info-container">
-          <p class="product-card-description">SSD KINGSTON</p>
-          <p class="product-card-price">R$ 200,00</p>
-        </div>
-        <div class="product-card-button-container">
-          <button class="product-card-button">Comprar</button>
-        </div>
-      </div>
-      <div class="product-card">
-        <img class="product-card-image" src="./images/85197_1484306076_m.jpg" alt="">
-        <div class="product-card-info-container">
-          <p class="product-card-description">SSD KINGSTON</p>
-          <p class="product-card-price">R$ 200,00</p>
-        </div>
-        <div class="product-card-button-container">
-          <button class="product-card-button">Comprar</button>
-        </div>
-      </div>
-    </div>
-    <div class="card-container">
-      <div class="product-card">
-        <img class="product-card-image" src="./images/85197_1484306076_m.jpg" alt="">
-        <div class="product-card-info-container">
-          <p class="product-card-description">SSD KINGSTON</p>
-          <p class="product-card-price">R$ 200,00</p>
-        </div>
-        <div class="product-card-button-container">
-          <button class="product-card-button">Comprar</button>
-        </div>
-      </div>
-      <div class="product-card">
-        <img class="product-card-image" src="./images/85197_1484306076_m.jpg" alt="">
-        <div class="product-card-info-container">
-          <p class="product-card-description">SSD KINGSTON</p>
-          <p class="product-card-price">R$ 200,00</p>
-        </div>
-        <div class="product-card-button-container">
-          <button class="product-card-button">Comprar</button>
-        </div>
-      </div>
-      <div class="product-card">
-        <img class="product-card-image" src="./images/85197_1484306076_m.jpg" alt="">
-        <div class="product-card-info-container">
-          <p class="product-card-description">SSD KINGSTON</p>
-          <p class="product-card-price">R$ 200,00</p>
-        </div>
-        <div class="product-card-button-container">
-          <button class="product-card-button">Comprar</button>
-        </div>
-      </div>
-      <div class="product-card">
-        <img class="product-card-image" src="./images/85197_1484306076_m.jpg" alt="">
-        <div class="product-card-info-container">
-          <p class="product-card-description">SSD KINGSTON</p>
-          <p class="product-card-price">R$ 200,00</p>
-        </div>
-        <div class="product-card-button-container">
-          <button class="product-card-button">Comprar</button>
-        </div>
-      </div>
-    </div>
+      </template>
+    </section>
   </div>
 
   <aside id="categories-aside">
@@ -116,10 +45,6 @@
     <div class="aside-category"><img src="./assets/smartphone.png" alt="Esporte e Lazer"></div>
     <div class="aside-category"><img src="./assets/cabide.png" alt="Esporte e Lazer"></div>
   </aside>
-
-
-
-
   <footer>
     <!--
     <a href="https://www.flaticon.com/br/icones-gratis/futebol" title="futebol ícones">Futebol ícones criados por Smashicons - Flaticon</a>
@@ -133,6 +58,112 @@
     <p>&copy;copyright all rights reserved 2022</p>
   </footer>
 
+  <script>
+
+    let anuncios = [];
+    let offset = 6;
+    
+    function pesquisaAnuncio(pesquisa) {
+      anuncios = [];
+      
+      const cards = document.querySelectorAll(".product-card");
+
+      for (let card of cards) {
+        card.remove();
+      }
+
+      let xhr = new XMLHttpRequest();
+      xhr.open("GET", "/controller/pesquisaAnuncio.php?titulo=" + pesquisa);
+      xhr.responseType = "json";
+      xhr.onload = function () {
+        if (xhr.status != 200 || xhr.response === null) {
+          console.log("A resposta não pode ser obtida ");
+          console.log(xhr.status);
+          return;
+      }
+        anuncios = xhr.response;
+        renderAnuncios(anuncios);
+        
+      }
+      xhr.send();
+    }
+
+    function renderAnuncios(anuncios){
+      
+      const card = document.querySelector(".card-container");
+      const cards = document.querySelectorAll(".product-card");
+      for (let card of cards) {
+        card.remove();
+      }
+
+      if(anuncios.length == 0){
+        card.innerHTML = "<p>Nenhum anúncio encontrado</p>";
+        return;
+      }else{
+        for (let anuncio of anuncios) {
+          let html = template.innerHTML
+            .replace("{{imagePath}}", anuncio.imagePath)
+            .replace("{{titulo}}", anuncio.titulo)
+            .replace("{{descricao}}", anuncio.descricao)
+            .replace("{{codigo}}", anuncio.codigo)
+            .replace("{{preco}}", anuncio.preco);
+          card.insertAdjacentHTML("beforeend", html);
+        };
+      }
+      
+      const btnCompra = document.querySelectorAll(".product-card-button");
+
+      btnCompra.forEach((btn) => {
+        btn.onclick = () => {
+          const codigo = btn.parentElement.parentElement.querySelector(".product-card-code").innerText;
+
+          redirectDetalhesAnuncio(codigo);
+        };
+      });
+    }
+
+    window.onload = function () {
+      pesquisaAnuncio("");
+      const inputPesquisa = document.querySelector("#pesquisa");
+      inputPesquisa.onkeyup = () => pesquisaAnuncio(inputPesquisa.value);
+
+    }
+
+    function redirectDetalhesAnuncio(codigo) {
+    
+      window.location.href = "/view/detalhesAnuncio.html?codigo=" + codigo;
+    }
+      
+
+    window.onscroll = function () {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        loadAnuncios();
+      }
+    };
+
+    function loadAnuncios() {
+      let xhr = new XMLHttpRequest();
+      xhr.open("GET", "/controller/maisAnuncios.php?offset=" + offset);
+      offset += 6;
+      xhr.responseType = "json";
+      xhr.onload = function () {
+        if (xhr.status != 200 || xhr.response === null) {
+          console.log("A resposta não pode ser obtida ");
+          console.log(xhr.status);
+          return;
+      }
+        retornoJson = xhr.response;
+        if(retornoJson.length != 0 && retornoJson != null){
+          for(let anuncio of retornoJson){
+            anuncios.push(anuncio);
+          }
+        }
+      }
+      xhr.send();
+      renderAnuncios(anuncios);
+    }
+
+  </script>
 </body>
 
 </html>

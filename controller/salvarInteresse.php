@@ -4,60 +4,56 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/database/dbConnector.php");
 $pdo = getConnection();
 
 class Interesse {
-  private $codigo;
   private $mensagem;
   private $dataHora;
   private $contato;
   private $codAnuncio;
 
-  public function __construct($codigo, $mensagem, $dataHora, $contato, $codAnuncio){
-    $this->codigo = $codigo;
+  function __construct( $mensagem, $dataHora, $contato, $codAnuncio){
     $this->mensagem = $mensagem;
     $this->dataHora = $dataHora;
     $this->contato = $contato;
     $this->codAnuncio = $codAnuncio;
   }
-}
 
-public function isValid(){
+  function getContato(){ return $this->contato; }
+  
+function isValid(){
   $validation = array(
       "valid" => true,
       "messages" => []
   );
   
-  if($this->codigo == ""){
+  if($this->mensagem == ""){
       $validation ['valid'] = false;
       array_push($validation['messages'], "Informe a mensagem");            
   }
   
-  $emailValido = filter_var($this->email, FILTER_VALIDATE_EMAIL);
-  if(!$emailValido || $this->email == ""){
-      $validation ['valid'] = false;
-      array_push($validation['messages'], "O e-mail é inválido");
-  }
   return $validation;
 }
 
-public function getParamsToSave(){
+function getParamsToSave(){
   $params = [
-      $this->codigo = $codigo;
-      $this->mensagem = $mensagem;
-      $this->dataHora = $dataHora;
-      $this->contato = $contato;
-      $this->codAnuncio = $codAnuncio;
+      $this->mensagem,
+      $this->dataHora ,
+      $this->contato ,
+      $this->codAnuncio
   ];
+
   return $params;
 }
+}
+
 
 header('Content-Type: application/json; charset=utf-8');
 if(!empty($_POST)) {
-    $codigo           = $_POST['codigo'] ?? "";
     $mensagem         = $_POST['mensagem'] ?? "";
-    $dataHora         = $_POST['dataHora'] ?? "";
+    $dataHora         =  date('Y-m-d H:i:s');
     $contato          = $_POST['contato'] ?? "";
-    $codAnuncio       = $_POST['codAnuncio'] ?? "";
+    $codAnuncio       = $_POST['idAnuncio'] ?? "";
+
     
-    $interesse = new Interesse($codigo, $mensagem, $dataHora, $contato, $codAnuncio);
+    $interesse = new Interesse( $mensagem, $dataHora, $contato, $codAnuncio);
     $validation = $interesse->isValid();
     
     if(!$validation['valid']){
@@ -85,8 +81,8 @@ function saveInteresse(Interesse $int){
   }
 
   $query = <<<SQL
-  INSERT INTO interesse (codigo, mensagem, dataHora, contato, codAnuncio)
-  VALUES (?, ?, ?, ?, ?);
+  INSERT INTO interesse (mensagem, dataHora, contato, codAnuncio)
+  VALUES (?, ?, ?, ?);
   SQL;
   
   try {
@@ -104,7 +100,7 @@ function interesseExists(Interesse $int, PDO $pdo){
   $contato = $int->getContato();
 
   $query = <<<SQL
-  SELECT COUNT(nome) as existe
+  SELECT COUNT(*) AS existe
   FROM Interesse 
   WHERE contato = ?;
   SQL;
@@ -123,5 +119,4 @@ function getResponseTemplate($success = true, $messages = []) {
   );
 }
 
-public function getContato(){ return $this->contato;}
 ?>
