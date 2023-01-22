@@ -10,7 +10,7 @@ class Interesse {
   private $contato;
   private $codAnuncio;
 
-  public function __construct($codigo, $mensagem, $dataHora, $contato, $codAnuncio){
+  function __construct($codigo, $mensagem, $dataHora, $contato, $codAnuncio){
     $this->codigo = $codigo;
     $this->mensagem = $mensagem;
     $this->dataHora = $dataHora;
@@ -19,7 +19,7 @@ class Interesse {
   }
 }
 
-public function isValid(){
+function isValid(){
   $validation = array(
       "valid" => true,
       "messages" => []
@@ -38,7 +38,7 @@ public function isValid(){
   return $validation;
 }
 
-public function getParamsToSave(){
+function getParamsToSave(){
   $params = [
       $this->codigo = $codigo;
       $this->mensagem = $mensagem;
@@ -123,5 +123,5 @@ function getResponseTemplate($success = true, $messages = []) {
   );
 }
 
-public function getContato(){ return $this->contato;}
+function getContato(){ return $this->contato;}
 ?>
