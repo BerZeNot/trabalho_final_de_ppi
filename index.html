@@ -13,8 +13,26 @@
 <body>
   <header>
     <img id="header-logo" src="./assets/Logo256px.png" alt="OPG Commerce logo" width="64" height="64">
-    <input type="text" placeholder="Pesquise aqui" id="pesquisa" name="pesquisa">
-    
+    <div id="buscaSimples" action="/" class="search-bar">
+      <input type="text" placeholder="Pesquise aqui" id="pesquisa" name="pesquisa">
+      <button id="buscaAvancada">
+        <img id="search-bar-img" src="./assets/busca-avancada.png" alt="">
+      </button>
+      
+      
+    </div>
+    <form id="buscaAvancadaForm" action="buscaAvancada.php">
+      <input class="inpAvancados" type="text" id="titulo" name="titulo" placeholder="Titulo">
+      <input class="inpAvancados" type="text" id="descricao" name="descricao"placeholder="Descricao">
+      <input class="inpAvancados" type="text" id="preco" name="preco" placeholder="Valor Mínimo">
+      <input class="inpAvancados" type="date" id="data" name="data">
+      <select class="inpAvancados" name="estado" id="estado" name="estado" placeholder="Estado">
+        <option value="">Estado</option>
+        <option value="SP">SP</option>
+        <option value="RJ">MG</option>
+        <option value="MG">RJ</option>
+      </select>
+    </form>
     <button id="header-button" type="button">Entrar</button>
   </header>
   <div class="landing-container">
@@ -62,6 +80,31 @@
 
     let anuncios = [];
     let offset = 6;
+
+    function pesquisaAvancadaAnuncio(){
+      
+          
+      let titulo = document.querySelector("#titulo").value;
+      let descricao = document.querySelector("#descricao").value;
+      let preco = document.querySelector("#preco").value;
+      let data = document.querySelector("#data").value;
+      let estado = document.querySelector("#estado").value;
+
+      xhr = new XMLHttpRequest();
+      xhr.open("GET", "/controller/buscaAvancada.php?titulo=" + titulo + "&descricao=" + descricao + "&preco=" + preco + "&data=" + data + "&estado=" + estado);
+
+      xhr.responseType = "json";
+      xhr.onload = function () {
+        if (xhr.status != 200 || xhr.response === null) {
+          console.log("A resposta não pode ser obtida ");
+          console.log(xhr.status);
+          return;
+        }
+        anuncios = xhr.response;
+        renderAnuncios(anuncios);
+      }
+      xhr.send();
+    }
     
     function pesquisaAnuncio(pesquisa) {
       anuncios = [];
@@ -127,6 +170,19 @@
       const inputPesquisa = document.querySelector("#pesquisa");
       inputPesquisa.onkeyup = () => pesquisaAnuncio(inputPesquisa.value);
 
+      const btnBuscaAvancada = document.querySelector("#buscaAvancada");
+      btnBuscaAvancada.onclick = () => {
+        document.getElementById('buscaAvancadaForm').style.display = "inline-block";
+        document.getElementById('pesquisa').style.display = "none";
+        document.getElementById('buscaSimples').style.display = "none";
+
+      const impBuscaAvanvada = document.querySelectorAll(".inpAvancados");
+      impBuscaAvanvada.forEach((inp) => {
+        inp.onkeyup = () => {
+          pesquisaAvancadaAnuncio();
+        };
+      });
+      }
     }
 
     function redirectDetalhesAnuncio(codigo) {

@@ -49,6 +49,20 @@ header {
   height: 14px;
 }
 
+.inpAvancados{
+  border: 0;
+  outline: none;
+  padding: 14px 10px;
+  font-size: 14px;
+  width: auto;
+  display: inline-block;
+}
+
+#buscaAvancadaForm{
+  display: none;
+  width: 60%;
+
+}
 
 #header-button {
   display: inline;
@@ -175,3 +189,4 @@ footer {
 footer p {
   padding: 24px 0;
 }
+
