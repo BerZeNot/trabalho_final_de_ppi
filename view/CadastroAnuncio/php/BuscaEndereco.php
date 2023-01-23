@@ -1,27 +1,44 @@
 <?php
-if (isset($_GET['cep'])){
-    $cep = $_GET['cep'];
+class Endereco
+{
+  public $cep;
+  public $estado;
+  public $bairro;
+  public $cidade;
 
-    $address = array(
-        "cep" => "38408-216",
-        "bairro" => "Santa Mônica",
-        "cidade" => "Uberlândia",
-        "estado" => "MG"
-    );
-
-    if($cep == '38408-216')
-        echo json_encode($address);
-    else {
-        $address = array(
-            "cep" => "",
-            "bairro" => "",
-            "cidade" => "",
-            "estado" => ""
-        );
-
-        echo json_encode($address);
-    }
-        
+  function __construct($cep, $estado, $bairro, $cidade)
+  {
+    $this->estado = $cep;
+    $this->estado = $estado;
+    $this->bairro = $bairro;
+    $this->cidade = $cidade;
+  }
 }
 
+require "../../../database/connection/conexaoMysql.php";
+$pdo = mysqlConnect();
+
+$cep = $_GET["cep"] ?? "";
+
+try {
+  $sql = <<<SQL
+  SELECT bairro, cidade, estado
+  FROM baseEnderecosAjax
+  WHERE cep = $cep
+  SQL;
+
+  $stmt = $pdo->query($sql);
+
+
+  while($row = $statement->fetch()) {
+
+    $endereco = new Endereco($row['cep'], $row['estado'], $row['bairro'], $row['cidade']);
+    }
+
+    header('Content-type: application/json');
+    echo json_encode($endereco);
+} 
+catch (Exception $e) {
+  exit('Ocorreu uma falha: ' . $e->getMessage());
+}
 ?>

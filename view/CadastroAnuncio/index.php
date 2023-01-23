@@ -1,17 +1,17 @@
 <?php
 
-session_start();
+// session_start();
 
-if(!$_SESSION['auth']){
-  http_response_code(403);
-  $response = <<<RES
-  <h1>Forbidden</h1>
-  <p>Você não tem permissão para acessar esta página!</p>
-  RES;
-  die($response);
-}
+// if(!$_SESSION['auth']){
+//   http_response_code(403);
+//   $response = <<<RES
+//   <h1>Forbidden</h1>
+//   <p>Você não tem permissão para acessar esta página!</p>
+//   RES;
+//   die($response);
+// }
 
-$nome = $fn = explode(" ", $_SESSION['nome'])[0];
+// $nome = $fn = explode(" ", $_SESSION['nome'])[0];
 
 $categorias = buscaCategorias();
 

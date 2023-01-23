@@ -1,6 +1,17 @@
 <?php
 
-//corrigir
+session_start();
+
+$auth = $_SESSION['auth'] ?? false;
+if(!$auth){
+    http_response_code(403);
+    $html = <<<HTML
+    <h1>Forbidden</h1>
+    <p>Você não tem permissão para acessar este recurso!
+    HTML;
+    die($html);
+}
+
 require "../conexaoMysql.php";
 $pdo = mysqlConnect();
 
@@ -13,7 +24,7 @@ $bairro = $_POST["bairro"] ?? "";
 $cidade = $_POST["cidade"] ?? "";
 $estado = $_POST["estado"] ?? "";
 $codCategoria = $_POST["codCategoria"] ?? "";
-$codAnunciante = $_POST["codAnunciante"] ?? "";
+$codAnunciante = $_SESSION['codigo'];
 try {
 
   $sql = <<<SQL
