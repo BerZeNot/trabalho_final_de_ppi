@@ -1,5 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-    document.querySelector("#btn-cadastrar").addEventListener("click", cadastrarAnunciante);
+    let btcadastrar = document.querySelector("#btn-cadastrar")
+    
+    if(btcadastrar)
+        btcadastrar.addEventListener("click", cadastrarAnunciante);
+    
+    let btSalvar = document.querySelector("#btn-salvar")
+
+    if(btSalvar)
+        btSalvar.addEventListener("click", salvarAnunciante);
 })
 
 async function cadastrarAnunciante(){
@@ -30,6 +38,42 @@ async function cadastrarAnunciante(){
         p.innerHTML = 'Redirecionando para a <a href="/view/login.html">página de login</a>';
         document.querySelector(".success").appendChild(p);
         setTimeout(() => window.location = "/view/login.html", 3000);
+    } else {
+        window.alert(data.messages[0]);
+        return
+    }
+}
+
+
+async function salvarAnunciante(){
+    cleanMessages();
+
+    let form = document.querySelector("form");
+    
+    let valid = validaDados(form);
+
+
+    if(!valid){
+        return;
+    }
+
+    let formData = new FormData(form);
+
+    const options = {
+        method: "POST",
+        body: formData
+    }
+    
+    const response = await fetch("/controller/cadastroAnunciante.php?update=true", options);
+
+    const data = await response.json();
+    if(data.success){
+        form.hidden = true;
+        document.querySelector(".title").innerText = "Seus dados foram atualizados!";
+        p = document.createElement("p");
+        p.innerHTML = 'Redirecionando para <a href="/view/DashboardAnunciante">Dashboard</a>';
+        document.querySelector(".success").appendChild(p);
+        setTimeout(() => window.location = "/view/DashboardAnunciante", 3000);
     } else {
         window.alert(data.messages[0]);
         return

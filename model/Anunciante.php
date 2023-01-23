@@ -79,6 +79,19 @@ class Anunciante {
         return $params;
     }
 
+    public function getParamsToUpdate(){
+        $passwordHash = password_hash($this->password, PASSWORD_DEFAULT);
+        
+        $params = [
+            $this->name,
+            $this->cpf,
+            $passwordHash,
+            $this->telephone
+        ];
+
+        return $params;
+    }
+
     
     public function getId() { return $this->id; }
     public function getName() { return $this->name; }

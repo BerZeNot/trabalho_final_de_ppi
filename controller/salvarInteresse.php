@@ -101,7 +101,7 @@ function interesseExists(Interesse $int, PDO $pdo){
 
   $query = <<<SQL
   SELECT COUNT(*) AS existe
-  FROM Interesse 
+  FROM interesse 
   WHERE contato = ?;
   SQL;
 
