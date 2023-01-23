@@ -5,6 +5,24 @@ header {
   position: relative;
 }
 
+#header-button-logout {
+  display: inline;
+  float: right;
+  margin-right: 10px;
+  width: 100px;
+  height: 48px;
+  margin-top: 25px;
+  background: rgb(195, 86, 53);
+  border-radius: 10px;
+  border: 0;
+  padding: 0 16px;
+  color: #fafafa;
+  transition: background-color 0.2s;
+
+
+}
+
+
 #header-logo {
   display: inline;
   margin-left: 64px;

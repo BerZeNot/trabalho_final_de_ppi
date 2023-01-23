@@ -50,14 +50,19 @@ function buscaCategorias(){
   <header>
     <div class="row">
       <div class="col">
-        <img id="header-logo" src="../../assets/Logo256px.png" alt="OPG Commerce logo" width="64" height="64">
+        <a href="../index.php"><img id="header-logo" src="../../assets/Logo256px.png" alt="OPG Commerce logo" width="64" height="64"></a>
       </div>
       <div class="col" id="header-user">
         <img id="header-logo" src="../../assets/user 2.png" alt="User Logo" width="64" height="64">
-        <p><?php echo $nome; ?> | <a href="/controller//logout.php">Sair</a></p>
+        <p><?php echo $nome; ?></p>
       </div>
     </div>
   </header>
+
+  <nav>
+  <button id="header-button-logout" type="button" onclick="window.location = '/controller/logout.php'">sair</button>
+  </nav>
+  
   <main class="container">
     <form enctype="multipart/form-data" action="./php/cadastraAnuncio.php" method="post">
       <fieldset>

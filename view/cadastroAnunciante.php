@@ -7,8 +7,65 @@
     <link rel="stylesheet" href="../css/global.css">
     <link rel="stylesheet" href="../css/cadastroAnunciante.css">
     <title>Cadastrar Anunciante</title>
+    <style>
+        #header-button {
+          display: inline;
+          float: right;
+          margin-right: 64px;
+          width: 160px;
+          height: 48px;
+          margin-top: 25px;
+          background: rgb(66, 70, 77);
+          border-radius: 10px;
+          border: 0;
+          padding: 0 16px;
+          color: #fafafa;
+          transition: background-color 0.2s;
+    
+    
+        }
+    
+        header {
+          height: 100px;
+          background-color: #A9A9A9;
+          display: block;
+          position: relative;
+        }
+    
+        #header-logo {
+          display: inline;
+          margin-left: 64px;
+          margin-top: 12px;
+        }
+    
+    
+        footer {
+          display: block;
+          position: fixed;
+          background-color: #A9A9A9;
+          width: 100%;
+          text-align: center;
+          height: 100px;
+          bottom: 0;
+          margin: auto;
+          left: 0;
+        }
+    
+        footer p {
+          padding: 24px 0;
+        }
+      </style>
 </head>
+
+
 <body>
+    
+<header>
+    <a href="/index.html">
+    <img id="header-logo" src="../assets/Logo256px.png" alt="OPG Commerce logo" width="64" height="64">    
+    </a>
+</header>
+
     <main>
         <div class="form-wrapper">
             <h1 class="title">Cadastrar de Anunciante</h1>
@@ -51,5 +108,19 @@
         </div>
     </main>
     <script src="./js/cadastroAnunciante.js"></script>
+    
+
+<footer>
+    <!--
+    <a href="https://www.flaticon.com/br/icones-gratis/futebol" title="futebol ícones">Futebol ícones criados por Smashicons - Flaticon</a>
+    <a href="https://www.flaticon.com/br/icones-gratis/carro" title="carro ícones">Carro ícones criados por Kiranshastry - Flaticon</a>
+    <a href="https://www.flaticon.com/br/icones-gratis/lugar" title="lugar ícones">Lugar ícones criados por Freepik - Flaticon</a>
+    <a href="https://www.flaticon.com/br/icones-gratis/musica" title="música ícones">Música ícones criados por IYAHICON - Flaticon</a>
+    <a href="https://www.flaticon.com/br/icones-gratis/fones-de-ouvido" title="fones de ouvido ícones">Fones de ouvido ícones criados por smashingstocks - Flaticon</a>
+    <a href="https://www.flaticon.com/br/icones-gratis/smartphone" title="smartphone ícones">Smartphone ícones criados por Anatoly - Flaticon</a>
+    <a href="https://www.flaticon.com/br/icones-gratis/guarda-roupa" title="guarda roupa ícones">Guarda roupa ícones criados por kornkun - Flaticon</a>
+    -->
+    <p>&copy;copyright all rights reserved 2022</p>
+  </footer>
 </body>
 </html>
