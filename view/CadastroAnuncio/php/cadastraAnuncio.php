@@ -1,7 +1,7 @@
 <?php
 
 //corrigir
-require "../conexaoMysql.php";
+require "../../database/dbConnector.php";
 $pdo = mysqlConnect();
 
 $titulo = $_POST["titulo"] ?? "";
@@ -32,8 +32,5 @@ try {
 } 
 catch (Exception $e) {  
   //error_log($e->getMessage(), 3, 'log.php');
-  if ($e->errorInfo[1] === 1062)
-    exit('Dados duplicados: ' . $e->getMessage());
-  else
-    exit('Falha ao cadastrar os dados: ' . $e->getMessage());
+  exit('Falha inesperada: ' . $e->getMessage());
 }

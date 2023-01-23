@@ -59,7 +59,7 @@ function buscaCategorias(){
     </div>
   </header>
   <main class="container">
-    <form enctype="multipart/form-data" action="./php/cadastraAnuncio.php" method="post">
+    <form enctype="multipart/form-data" action="../CadastroAnuncio/php/cadastraAnuncio.php" method="post">
       <fieldset>
         <legend>Dados do anúncio</legend>
         <div class="row">
@@ -100,7 +100,7 @@ function buscaCategorias(){
           <div class="col-md-2">
             <div>
               <label class="form-label" for="cep">CEP</label>
-              <input class="form-control" type="text" name="cep" id="cep" placeholder="38400-100" required>
+              <input class="form-control" type="text" name="cep" id="cep" placeholder="38400-100">
             </div>
           </div>
           <div class="col-md-4">

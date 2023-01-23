@@ -31,7 +31,7 @@ class Anuncio{
   }
 }
 
-function retornaAnuncio(Codigo $codigo){
+function retornaAnuncio($codigo){
   require_once($_SERVER['DOCUMENT_ROOT'] . "/database/dbConnector.php");
   $pdo = getConnection();
 
