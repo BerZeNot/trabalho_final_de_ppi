@@ -29,7 +29,7 @@ function buscaAnuncio(codigo){
                 document.getElementById("estado").innerHTML = anuncio.estado;
                 document.getElementById("categoria").innerHTML = anuncio.nomeCategoria;
                 document.getElementById("anunciante").innerHTML = anuncio.nomeAnunciante;
-                document.getElementById("imagem").src = "/assets/" +anuncio.imagePath;
+                document.getElementById("imagem").src = "/images/" +anuncio.imagePath;
                 document.getElementById("codigo").innerHTML = anuncio.codigo;
 
             }else{
