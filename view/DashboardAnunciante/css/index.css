@@ -52,11 +52,32 @@ header {
 
 footer {
   display: block;
+  position: fixed;
   background-color: #A9A9A9;
   width: 100%;
   text-align: center;
+  height: 100px;
+  bottom: 0;
+  margin: auto;
+  left: 0;
 }
-
 footer p {
   padding: 24px 0;
+}
+
+#header-button-logout {
+  display: inline;
+  float: right;
+  margin-right: 10px;
+  width: 100px;
+  height: 48px;
+  margin-top: 25px;
+  background: rgb(195, 86, 53);
+  border-radius: 10px;
+  border: 0;
+  padding: 0 16px;
+  color: #fafafa;
+  transition: background-color 0.2s;
+
+
 }

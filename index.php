@@ -8,11 +8,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  
 </head>
 
 <body>
   <header>
     <img id="header-logo" src="./assets/Logo256px.png" alt="OPG Commerce logo" width="64" height="64">
+
     <div id="buscaSimples" action="/" class="search-bar">
       <input type="text" placeholder="Pesquise aqui" id="pesquisa" name="pesquisa">
       <button id="buscaAvancada">
@@ -34,7 +36,23 @@
       </select>
     </form>
     <button id="header-button" type="button">Entrar</button>
+
   </header>
+
+  <nav>
+  <?php 
+    session_start();
+      $auth = isset($_SESSION['auth']);
+      if($auth){
+        
+        echo '<button id="header-button-logout" type="button" onclick="window.location = \'/controller/logout.php\'">sair</button>';
+        echo '<button id="header-button" type="button" onclick="window.location = \'/view/DashboardAnunciante\'">Dashboard</button>';
+      }else{
+        echo '<button id="header-button" type="button" onclick="window.location = \'/view/login.html\'">Entrar</button>';
+      }
+    ?>
+  </nav>
+  
   <div class="landing-container">
     
     <section class="card-container">
